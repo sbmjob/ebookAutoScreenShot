@@ -5,7 +5,7 @@ display dialog "右開き？左開き？" buttons {"左", "右"} default button 2 with tit
 set temp to result
 set btn to button returned of temp
 
-set dFolder to "~/Desktop/screencapture/"
+set dFolder to "~/Desktop/screencapture/" --デスクトップに画像保存用フォルダを事前準備しておく
 
 repeat with p from 1 to screenShotNumber
 	

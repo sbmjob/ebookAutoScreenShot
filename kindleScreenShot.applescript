@@ -1,6 +1,9 @@
 display dialog "スクショする回数を入力してください。" default answer "5" with title "Kindle Version"
 set screenShotNumber to text returned of result
 
+display dialog "保存ファイル名の開始番号を入力してください。" default answer "0"
+set startFileNumber to text returned of result
+
 display dialog "右開き？左開き？" buttons {"左", "右"} default button 2 with title "Kindle Version"
 set temp to result
 set btn to button returned of temp
@@ -18,7 +21,8 @@ repeat with p from 1 to screenShotNumber
 			
 			if p = 1 then
 				delay 1
-				do shell script ("screencapture " & dFolder & "0.png")
+				do shell script ("screencapture " & dFolder & startFileNumber & ".png")
+				set startFileNumber to startFileNumber + 1
 			end if
 			
 			--key code 123
@@ -29,8 +33,9 @@ repeat with p from 1 to screenShotNumber
 			end if
 			
 			delay 1
-			do shell script ("screencapture " & dFolder & p & ".png")
-			delay 1
+			do shell script ("screencapture " & dFolder & startFileNumber & ".png")
+			set startFileNumber to startFileNumber + 1
+			delay (random number from 1 to 2)
 			
 		end tell
 		
